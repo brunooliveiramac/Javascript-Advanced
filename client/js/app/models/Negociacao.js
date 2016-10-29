@@ -5,7 +5,7 @@ class Negociacao {
         this._data = new Date(data.getTime()); // criando uma nova instância a partir do tempo de uma data 
         this._quantidade = quantidade;
         this._valor = valor;
-		Obeject.freeze(this); //Can't be updated - isn't deep 
+		Object.freeze(this); //Can't be updated - isn't deep 
 
 	}
 
