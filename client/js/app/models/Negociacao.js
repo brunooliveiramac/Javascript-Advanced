@@ -5,12 +5,13 @@ class Negociacao {
         this._data = new Date(data.getTime()); // criando uma nova instância a partir do tempo de uma data 
         this._quantidade = quantidade;
         this._valor = valor;
+        this._volume = 0.0;
 		Object.freeze(this); //Can't be updated - isn't deep 
 
 	}
 
 
-	obtemVolume(){
+	get volume(){
 		return this._quantidade * this._valor;
 	}
 
