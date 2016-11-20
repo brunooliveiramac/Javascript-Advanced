@@ -10,10 +10,11 @@ class NegociacaoController{
 		 this._inputData = $('#data');
 		 this._inputQuantidade = $('#quantidade');
 		 this._inputValor = $('#valor');
-		 this._listaNegociacoes = new ListaNegociacoes();
+		 this._listaNegociacoes = new ListaNegociacoes(model =>  //Escopo do This em uma aero function é lexico, n muda de acordo com o contexto
+            this._negociacoesView.update(model)
+         );
 		 
 		 this._negociacoesView = new NegociacoesView($('#negociacoesView'));
-		 this._negociacoesView.update(this._listaNegociacoes); 
 
 		 this._mensagem = new Mensagem();
 		 this._mensagemView = new MensagemView($('#mensagemView'));
@@ -26,12 +27,19 @@ class NegociacaoController{
 
 		 this._listaNegociacoes.adiciona(this._criaNegociacao());
 		 this._limpaFormulario();
-		 this._negociacoesView.update(this._listaNegociacoes); 
 
 		 this._mensagem.texto = 'Negociacao Adicionada!';
 		 this._mensagemView.update(this._mensagem);
 
  		 console.log(this._listaNegociacoes.getNegociacoes());
+	}
+
+	apaga(){
+
+		this._listaNegociacoes.esvazia();
+
+		this._mensagem.texto = 'Negociações Apagadas';
+		this._mensagemView.update(this._mensagem);
 	}
 
 	_criaNegociacao(){
