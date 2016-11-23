@@ -8,6 +8,7 @@ class Negociacao {
         this._volume = 0.0;
 		Object.freeze(this); //Can't be updated - isn't deep 
 
+
 	}
 
 
